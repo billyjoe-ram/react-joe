@@ -1,7 +1,14 @@
 import { Container } from './styles';
 
-export default function Header() {
+import List from '../List';
+
+export default function Board() {
     return(
-        <div />
+        <Container>
+            <List />
+            <List />
+            <List />
+            <List />
+        </Container>
     );
 }
