@@ -1,14 +1,17 @@
 import { Container } from './styles';
 
+import { loadLists } from '../../services/api';
+
 import List from '../List';
+
+const lists = loadLists();
 
 export default function Board() {
     return(
         <Container>
-            <List />
-            <List />
-            <List />
-            <List />
+            {lists.map((list) => {
+                return <List key={list.title} data={list} />
+            })}
         </Container>
     );
 }
