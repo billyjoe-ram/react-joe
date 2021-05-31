@@ -1,8 +1,17 @@
 import { Container, Label } from './styles';
+import { useDrag } from 'react-dnd';
 
 export default function Card({ data }) {
+
+    const [{ isDragging }, dragRef] = useDrag({
+        type: 'CARD',
+        collect: monitor => ({
+            isDragging: monitor.isDragging(),
+        }),
+    });
+
     return(
-        <Container>
+        <Container ref={dragRef} isDragging={isDragging}>
             <header>
                 { data.labels.map((label) => {
                     return <Label color={label} key={label} />
